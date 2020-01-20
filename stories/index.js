@@ -8,6 +8,9 @@ import "index.scss";
 import Button from "components/Button";
 import DayListItem from "components/DayListItem";
 
+//storiesOf --> Initiates Storybook and registers the component
+//.add --> To define stories, call add() once for each of the test states to generate a story
+
 storiesOf("Button", module)
   .addParameters({
     backgrounds: [{ name: "dark", value: "#222f3e", default: true }]
@@ -23,3 +26,14 @@ storiesOf("Button", module)
       Disabled
     </Button>
   ));
+
+storiesOf("DayListItem", module) 
+  .addParameters({
+    backgrounds: [{ name: "dark", value: "#222f3e", default: true }]
+  }) // Provides the default background color for our component
+  .add("Unselected", () => <DayListItem name="Monday" spots={5} />)
+  .add("Selected", () => <DayListItem name="Monday" spots={5} selected />) 
+  .add("Full", () => <DayListItem name="Monday" spots={0} />)
+  .add("Clickable", () => (
+    <DayListItem name="Tuesday" setDay={action("setDay")} spots={5} /> // action() allows us to create a callback that appears in the actions panel when clicked
+));
