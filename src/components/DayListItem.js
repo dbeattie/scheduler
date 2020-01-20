@@ -25,8 +25,3 @@ export default function DayListItem(props) {
     </li>
   );
 }
-
-//CSS classes from DayListItem.scss
-// .day-list__item { ... }
-// .day-list__item--selected { ... }
-// .day-list__item--full. { ... }
