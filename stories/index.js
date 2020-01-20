@@ -11,6 +11,8 @@ import DayList from "components/DayList";
 import InterviewerListItem from "components/InterviewerListItem";
 import InterviewerList from "components/InterviewerList";
 
+import Appointment from "components/Appointment";
+
 //storiesOf --> Initiates Storybook and registers the component
 //.add --> To define stories, call add() once for each of the test states to generate a story
 
@@ -134,3 +136,10 @@ storiesOf("InterviewerList", module)
       onChange={action("onChange")}
     />
   ));
+
+storiesOf("Apppointment", module)
+  .addParameters({
+    backgrounds: [{ name: "white", value: "#fff", default: true }]
+   })
+   .add("Appointment", () => <Appointment />)
+   .add("Appointment with Time", () => <Appointment time="12pm" />);
