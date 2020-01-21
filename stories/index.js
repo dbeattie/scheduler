@@ -13,6 +13,7 @@ import InterviewerList from "components/InterviewerList";
 
 import Appointment from "components/Appointment";
 import Header from "components/Appointment/Header";
+import Empty from "components/Appointment/Empty";
 
 //storiesOf --> Initiates Storybook and registers the component
 //.add --> To define stories, call add() once for each of the test states to generate a story
@@ -145,3 +146,4 @@ storiesOf("Apppointment", module)
    .add("Appointment", () => <Appointment />)
    .add("Appointment with Time", () => <Appointment time="12pm" />)
    .add("Header", () => <Header time="12pm" />)
+   .add("Empty", () => <Empty onAdd={action("onAdd")} />)
