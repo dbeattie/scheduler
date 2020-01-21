@@ -1,27 +1,28 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 
 import "components/Application.scss";
 import DayList from "components/DayList.js";
 import Appointment from "components/Appointment";
+const axios = require('axios');
 
 //TEST DATA for Webpack DayList components rendering
-const days = [
-  {
-    id: 1,
-    name: "Monday",
-    spots: 2,
-  },
-  {
-    id: 2,
-    name: "Tuesday",
-    spots: 5,
-  },
-  {
-    id: 3,
-    name: "Wednesday",
-    spots: 0,
-  },
-];
+// const days = [
+//   {
+//     id: 1,
+//     name: "Monday",
+//     spots: 2,
+//   },
+//   {
+//     id: 2,
+//     name: "Tuesday",
+//     spots: 5,
+//   },
+//   {
+//     id: 3,
+//     name: "Wednesday",
+//     spots: 0,
+//   },
+// ];
 
 //TEST DATA for WebPack Appointments components rendering
 const appointments = [
@@ -73,6 +74,16 @@ const appointments = [
 
 export default function Application(props) {
   const [day, setDay] = useState("Monday");
+  const [days, setDays] = useState([]);
+  
+  useEffect(() => {
+    axios.get("http://localhost:8001/api/days").then((response) => {
+      console.log('RESPONSE.DATA:', response.data)
+      setDays(response.data);
+    })
+  }, []);
+  
+  
   const appointmentComponents = appointments.map(appointment => {
     return (
       <Appointment key={appointment.id} {...appointment}/>
