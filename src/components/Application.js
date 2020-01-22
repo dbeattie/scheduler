@@ -29,9 +29,8 @@ export default function Application(props) {
       })
     });
   }, []);
-  // console.log('STATE.INTERVIEWERS:-->', state.interviewers);
 
-  //NEW PROVIDED BY LHL BITS:
+  //NEW PROVIDED BITS FROM LHL:
   const appointments = getAppointmentsForDay(state, state.day);
 
   const schedule = appointments.map((appointment) => {
