@@ -21,7 +21,6 @@ function getInterview(state, interview) {
       "student": interview.student,
       "interviewer": state.interviewers[interview.interviewer]
     }
-    console.log('RESULT:-->', result);
     return result;
   }
 }
