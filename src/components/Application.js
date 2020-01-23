@@ -30,7 +30,7 @@ export default function Application(props) {
     });
   }, []);
 
-  //SAVES INTERVIEW DATA INTO APPOINTMENTS DATABASE API
+  //Saves Interview Data into Appointments Database API
   function bookInterview(id, interview) {
     
     const appointment = {
@@ -41,11 +41,11 @@ export default function Application(props) {
       ...state.appointments,
       [id]: appointment
     };
-    
+  
     return axios.put(`/api/appointments/${id}`, appointment).then(() => setState(prev => ({...state, appointments})))
   }
 
-  //"DELETES" INTERVIEW DATA IN APPOINTMENTS DATABASE API -- SETS TO NULL
+  //"Deletes Interview Data in Appointments Database API -- Sets to Null
   function deleteInterview(id) {
     
     const appointment = {
