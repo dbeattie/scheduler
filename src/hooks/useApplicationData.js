@@ -65,10 +65,12 @@ export default function useApplicationData() {
 
       return axios.put(`/api/appointments/${id}`, appointment)
       .then(() => {
-        //Removes an integer from days.spots API, lowering availability
-        let dayObj = state.days.find(day => day.name === state.day);
-        state.days[dayObj.id - 1].spots-- 
-        dispatch({ type: SET_INTERVIEW, id, interview })
+        //Removes an integer from days.spots API, lowering availability but only if the interview slot is null
+        if (state.appointments[id].interview === null) {
+          let dayObj = state.days.find(day => day.name === state.day);
+          state.days[dayObj.id - 1].spots-- 
+          dispatch({ type: SET_INTERVIEW, id, interview })
+        }
       }) 
   }
 
