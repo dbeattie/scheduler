@@ -22,9 +22,16 @@ export default function Appointment(props) {
   const EDIT = "EDIT"
   const ERROR_SAVE = "ERROR_SAVE";
   const ERROR_DELETE = "ERROR_DELETE";
+  const ERROR_NAME = "ERROR_NAME";
+  const ERROR_INTERVIEWER = "ERROR_INTERVIEWER";
 
   //Transitions to Save Spinner, then Show Page
   function saveAppointment(name, interviewer) {
+   if (!interviewer) {
+      transition(ERROR_INTERVIEWER, true);
+   } else if (name === "") {
+      transition(ERROR_NAME, true);
+   } else {
     const interview = {
       student: name,
       interviewer
@@ -34,8 +41,9 @@ export default function Appointment(props) {
       .bookInterview(props.id, interview)
       .then(() => transition(SHOW))
       .catch(error => transition(ERROR_SAVE, true));
+   } 
   }
-  
+
   //Transitions to Confirm Form
   function destroyAppointment(name, interviewer) {
     transition(CONFIRM);
@@ -113,6 +121,18 @@ export default function Appointment(props) {
       {mode === ERROR_DELETE && (
         <Error
         message={"Could not delete appointment."}
+        onClose={back}
+        />
+      )}
+      {mode === ERROR_NAME && (
+        <Error
+        message={"Student Name Field Cannot Be Empty."}
+        onClose={back}
+        />
+      )}
+      {mode === ERROR_INTERVIEWER && (
+        <Error
+        message={"You Must Choose an Interviewer!"}
         onClose={back}
         />
       )}

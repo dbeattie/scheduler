@@ -63,14 +63,14 @@ export default function useApplicationData() {
       interview,
     };
 
-    return axios.put(`/api/appointments/${id}`, appointment)
+      return axios.put(`/api/appointments/${id}`, appointment)
       .then(() => {
         //Removes an integer from days.spots API, lowering availability
         let dayObj = state.days.find(day => day.name === state.day);
         state.days[dayObj.id - 1].spots-- 
         dispatch({ type: SET_INTERVIEW, id, interview })
       }) 
-    }
+  }
 
   //"Deletes Interview Data in Appointments Database API -- Sets to Null
   function cancelInterview(id) {
@@ -79,7 +79,7 @@ export default function useApplicationData() {
       interview: null
     };
 
-    return axios.delete(`/api/appointments/${id}`, appointment)
+    return axios.delete(`/api/appointments/${id}`)
       .then(() => {
         //Adds an integer to the days.spots API, indicating availability
         let dayObj = state.days.find(day => day.name === state.day);
