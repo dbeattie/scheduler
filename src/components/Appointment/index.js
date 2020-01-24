@@ -29,7 +29,7 @@ export default function Appointment(props) {
   function saveAppointment(name, interviewer) {
    if (!interviewer) {
       transition(ERROR_INTERVIEWER, true);
-   } else if (name === "") {
+   } else if (name === "") {  
       transition(ERROR_NAME, true);
    } else {
     const interview = {
