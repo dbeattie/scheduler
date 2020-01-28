@@ -22,7 +22,6 @@ export default function Appointment(props) {
   const EDIT = "EDIT"
   const ERROR_SAVE = "ERROR_SAVE";
   const ERROR_DELETE = "ERROR_DELETE";
-  const ERROR_NAME = "ERROR_NAME";
   const ERROR_INTERVIEWER = "ERROR_INTERVIEWER";
 
   //Transitions to Save Spinner, then Show Page
@@ -66,7 +65,7 @@ export default function Appointment(props) {
     props.interview ? SHOW : EMPTY);
   
   return (
-    <article className="appointment">
+    <article className="appointment" data-testid="appointment">
       <Header time={props.time} />
       {mode === EMPTY && <Empty onAdd={() => transition(CREATE)} />}
       {mode === CREATE && (
@@ -119,12 +118,6 @@ export default function Appointment(props) {
       {mode === ERROR_DELETE && (
         <Error
         message={"Could not delete appointment."}
-        onClose={back}
-        />
-      )}
-      {mode === ERROR_NAME && (
-        <Error
-        message={"Student Name Field Cannot Be Empty."}
         onClose={back}
         />
       )}
