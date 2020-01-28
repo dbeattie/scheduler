@@ -1,35 +1,43 @@
 import React, { useReducer, useEffect } from "react";
-import axios from "__mocks__/axios";
+// const axios = require('axios');
+import axios from "axios";
 
-const SET_DAY = "SET_DAY";
-const SET_APPLICATION_DATA = "SET_APPLICATION_DATA";
-const SET_INTERVIEW = "SET_INTERVIEW";
+import reducer, {
+  SET_DAY,
+  SET_APPLICATION_DATA,
+  SET_INTERVIEW
+} from "reducers/application";
 
-function reducer(state, action) {
-  if (action.type === SET_DAY) {
-    return { ...state, day: action.day };
-  }
-  if (action.type === SET_APPLICATION_DATA) {
-    return { ...state, days: action.days, appointments: action.appointments, interviewers: action.interviewers };
-  }      
-  if (action.type === SET_INTERVIEW) {
-    const { id, interview } = action;
 
-    return {
-      ...state,
-      appointments: {
-        ...state.appointments,
-        [id]: {
-          ...state.appointments[action.id],
-          interview: action.interview ? { ...interview } : null
-        }
-      }
-    }
-  }
-  throw new Error(
-    `Tried to reduce with unsupported action type: ${action.type}`
-  );
-}
+// const SET_DAY = "SET_DAY";
+// const SET_APPLICATION_DATA = "SET_APPLICATION_DATA";
+// const SET_INTERVIEW = "SET_INTERVIEW";
+
+// function reducer(state, action) {
+//   if (action.type === SET_DAY) {
+//     return { ...state, day: action.day };
+//   }
+//   if (action.type === SET_APPLICATION_DATA) {
+//     return { ...state, days: action.days, appointments: action.appointments, interviewers: action.interviewers };
+//   }      
+//   if (action.type === SET_INTERVIEW) {
+//     const { id, interview } = action;
+
+//     return {
+//       ...state,
+//       appointments: {
+//         ...state.appointments,
+//         [id]: {
+//           ...state.appointments[action.id],
+//           interview: action.interview ? { ...interview } : null
+//         }
+//       }
+//     }
+//   }
+//   throw new Error(
+//     `Tried to reduce with unsupported action type: ${action.type}`
+//   );
+// }
 
 export default function useApplicationData() {
 
