@@ -82,7 +82,7 @@ export default function useApplicationData() {
     }) 
   }
 
-  //"Deletes Interview Data in Appointments Database API -- Sets to Null
+  //Deletes Interview Data in Appointments Database API -- Sets to Null
   function cancelInterview(id) {
     const appointment = {
       ...state.appointments[id],
