@@ -1,6 +1,10 @@
 import React from "react";
 
-import { render, cleanup, waitForElement, fireEvent, getByText, prettyDOM, getAllByTestId, getByAltText, getByPlaceholderText, queryByText, queryByAltText, getByTestId } from "@testing-library/react";
+import { render, cleanup, waitForElement, fireEvent, getByText, getAllByTestId, getByAltText, getByPlaceholderText, queryByText, queryByAltText } from "@testing-library/react";
+
+/* 1. Add prettyDOM as import for Debugging purposes -- Will console log output html
+   2. Add debug [call with debug()] to container object on render for debugging purposes.
+      Let's you pause code to debug, was removed after debugging. */
 
 import axios from "axios";
 import Application from "components/Application";
@@ -19,12 +23,14 @@ describe("Application", () => {
   })
 
   it("loads data, books an interview and reduces the spots remaining for Monday by 1", async () => {
-    const { container, debug } = render(<Application />);
+    // 1. Render the Application.
+    const { container } = render(<Application />);
     
+    // 2. Wait until the text "Archie Cohen" is displayed.
     await waitForElement(() => getByText(container, "Archie Cohen"));
 
     // 3. Click the "Add" button on the first empty appointment.
-    const appointments = getAllByTestId(container, "appointment");
+    // const appointments = getAllByTestId(container, "appointment");
     const appointment = getAllByTestId(container, "appointment")[0];
 
     fireEvent.click(getByAltText(appointment, "Add"));
@@ -89,13 +95,12 @@ describe("Application", () => {
     );
 
     waitForElement(() => expect(getByText(day, "2 spots remaining")).toBeInTheDocument());
-    // expect(getByText(day, "2 spots remaining")).toBeInTheDocument();
-    // debug();
+    
   });
 
   it("loads data, edits an interview and keeps the spots remaining for Monday the same", async () => {
     // 1. Render the Application.
-    const { container, debug } = render(<Application />);
+    const { container } = render(<Application />);
 
     // 2. Wait until the text "Archie Cohen" is displayed.
     await waitForElement(() => getByText(container, "Archie Cohen")); 
@@ -119,6 +124,7 @@ describe("Application", () => {
 
     waitForElement(() => getByText(container, "The Dude"));
     
+    // 7. Check that the DayListItem with the text "Monday" still has text "1 spot remaining".
     const day = getAllByTestId(container, "day").find(day =>
       queryByText(day, "Monday")
     );
@@ -127,11 +133,11 @@ describe("Application", () => {
   }); 
 
   it("shows the save error when failing to save an appointment", async () => {
-    //sets fake saving error one time
+    //Sets fake saving error one time
     axios.put.mockRejectedValueOnce();
 
     // 1. Render the Application.
-    const { container, debug } = render(<Application />);
+    const { container } = render(<Application />);
 
     // 2. Wait until the text "Archie Cohen" is displayed.
     await waitForElement(() => getByText(container, 'Archie Cohen'));
@@ -163,11 +169,11 @@ describe("Application", () => {
   });
   
   it("shows the delete error when failing to delete an existing appointment", async () => {
-    //sets fake delete error one time
+    //Sets fake delete error one time
     axios.delete.mockRejectedValueOnce();
 
     // 1. Render the Application.
-    const { container, debug } = render(<Application />);
+    const { container } = render(<Application />);
 
     // 2. Wait until the text "Archie Cohen" is displayed.
     await waitForElement(() => getByText(container, 'Archie Cohen'));
