@@ -1,5 +1,4 @@
 import React, { useReducer, useEffect } from "react";
-// const axios = require('axios');
 import axios from "axios";
 
 import reducer, {
@@ -7,37 +6,6 @@ import reducer, {
   SET_APPLICATION_DATA,
   SET_INTERVIEW
 } from "reducers/application";
-
-
-// const SET_DAY = "SET_DAY";
-// const SET_APPLICATION_DATA = "SET_APPLICATION_DATA";
-// const SET_INTERVIEW = "SET_INTERVIEW";
-
-// function reducer(state, action) {
-//   if (action.type === SET_DAY) {
-//     return { ...state, day: action.day };
-//   }
-//   if (action.type === SET_APPLICATION_DATA) {
-//     return { ...state, days: action.days, appointments: action.appointments, interviewers: action.interviewers };
-//   }      
-//   if (action.type === SET_INTERVIEW) {
-//     const { id, interview } = action;
-
-//     return {
-//       ...state,
-//       appointments: {
-//         ...state.appointments,
-//         [id]: {
-//           ...state.appointments[action.id],
-//           interview: action.interview ? { ...interview } : null
-//         }
-//       }
-//     }
-//   }
-//   throw new Error(
-//     `Tried to reduce with unsupported action type: ${action.type}`
-//   );
-// }
 
 export default function useApplicationData() {
 
@@ -73,7 +41,7 @@ export default function useApplicationData() {
 
     return axios.put(`/api/appointments/${id}`, appointment)
     .then(() => {
-      //Removes an integer from days.spots API, lowering availability but only if the interview slot is null
+      //Removes an spot from days.spots API, only if the interview slot is null
       if (state.appointments[id].interview === null) {
         let dayObj = state.days.find(day => day.name === state.day);
         state.days[dayObj.id - 1].spots-- 
@@ -82,7 +50,7 @@ export default function useApplicationData() {
     }) 
   }
 
-  //Deletes Interview Data in Appointments Database API -- Sets to Null
+  //Deletes interview data in appointments database API -- sets interview to null
   function cancelInterview(id) {
     const appointment = {
       ...state.appointments[id],

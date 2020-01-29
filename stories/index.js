@@ -21,9 +21,6 @@ import Error from "components/Appointment/Error";
 import Edit from "components/Appointment/Form";
 import Create from "components/Appointment/Form";
 
-//storiesOf --> Initiates Storybook and registers the component
-//.add --> To define stories, call add() once for each of the test states to generate a story
-
 storiesOf("Button", module)
   .addParameters({
     backgrounds: [{ name: "dark", value: "#222f3e", default: true }]
@@ -48,11 +45,11 @@ storiesOf("DayListItem", module)
   .add("Selected", () => <DayListItem name="Monday" spots={5} selected />) 
   .add("Full", () => <DayListItem name="Monday" spots={0} />)
   .add("Clickable", () => (
-    <DayListItem name="Tuesday" setDay={action("setDay")} spots={5} /> // action() allows us to create a callback that appears in the actions panel when clicked
+    <DayListItem name="Tuesday" setDay={action("setDay")} spots={5} /> 
   ));
 
 
-//TEST DATA for DayList component
+//Test Data for DayList component
 const days = [
   {
     id: 1,
@@ -83,7 +80,7 @@ storiesOf("DayList", module)
   ));
 
 
-//TEST DATA for InterviewerListItem
+//Test Data for InterviewerListItem
 const interviewer = {
   id: 1,
   name: "Sylvia Palmer",
@@ -118,7 +115,7 @@ storiesOf("InterviewerListItem", module)
     />
   ));
 
-//TEST DATA for InterviewList
+//Test Data for InterviewList
 const interviewers = [
   { id: 1, name: "Sylvia Palmer", avatar: "https://i.imgur.com/LpaY82x.png" },
   { id: 2, name: "Tori Malcolm", avatar: "https://i.imgur.com/Nmx0Qxo.png" },

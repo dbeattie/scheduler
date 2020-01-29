@@ -27,7 +27,7 @@ export default function Appointment(props) {
   //Transitions to Save Spinner, then Show Page
   function saveAppointment(name, interviewer) {
    if (!interviewer) {
-      transition(ERROR_INTERVIEWER, true);
+      transition(ERROR_INTERVIEWER);
    } else {
     const interview = {
       student: name,
@@ -46,7 +46,7 @@ export default function Appointment(props) {
     transition(CONFIRM);
   }
 
-  //Confirms the Delete from the Confirm Form
+  //Confirms the Delete request from the Confirm Form
   function confirmDestroy(event) {
     transition(DELETING, true);
     

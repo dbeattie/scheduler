@@ -6,9 +6,7 @@ import InterviewerList from "components/InterviewerList";
 export default function Form(props) {
 
   const [name, setName] = useState(props.name || "");
-
-  const [interviewer, setInterviewer] = useState(props.interviewer || null)
-  
+  const [interviewer, setInterviewer] = useState(props.interviewer || null);
   const [error, setError] = useState("");
 
   const reset = () => {
@@ -43,9 +41,7 @@ export default function Form(props) {
             value={name}
             onChange={event => setName(event.target.value)}
             data-testid="student-name-input"
-            /*
-              This must be a controlled component
-            */
+            /* This must be a controlled component */
           />
         <section className="appointment__validation">{error}</section>
         </form>
@@ -63,7 +59,4 @@ export default function Form(props) {
       </section>
     </main>
   );
-} 
-
-//****THIS .id was removed to render on the USing our Custom Hook Lesson ***** 
-{/* <InterviewerList interviewers={props.interviewers} value={interviewer.id} onChange={setInterviewer} /> */}
+}
