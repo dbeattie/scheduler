@@ -39,12 +39,12 @@ export default function Appointment(props) {
       .then(() => transition(SHOW))
       .catch(error => transition(ERROR_SAVE, true));
    } 
-  }
+  };
 
   //Transitions to Confirm Form
   function destroyAppointment(name, interviewer) {
     transition(CONFIRM);
-  }
+  };
 
   //Confirms the Delete request from the Confirm Form
   function confirmDestroy(event) {
@@ -54,12 +54,12 @@ export default function Appointment(props) {
       .cancelInterview(props.id)
       .then(() => transition(EMPTY))
       .catch(error => transition(ERROR_DELETE, true));
-  }
+  };
 
   //Transtitions to the Edit (Similar to Create) Form view
   function editAppointment(name, interviewer) {
     transition(EDIT);
-  }
+  };
 
   const { mode, transition, back } = useVisualMode(
     props.interview ? SHOW : EMPTY);

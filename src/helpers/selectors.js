@@ -22,7 +22,7 @@ function getInterview(state, interview) {
     }
     return result;
   }
-}
+};
 
 function getInterviewersForDay(state, day) {
   const returnArr = [];

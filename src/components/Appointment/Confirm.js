@@ -1,5 +1,4 @@
 import React from "react";
-
 import Button from "../Button";
 
 export default function Empty(props) {
@@ -12,4 +11,4 @@ export default function Empty(props) {
       </section>
     </main>
   );
-}
+};

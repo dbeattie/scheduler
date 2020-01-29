@@ -1,5 +1,4 @@
 import React, { useState } from "react";
-
 import Button from "../Button";
 import InterviewerList from "components/InterviewerList";
 
@@ -23,7 +22,7 @@ export default function Form(props) {
     if (name === "") {
       setError("Student name cannot be blank");
       return;
-    }
+    };
   
     setError("");
     props.onSave(name, interviewer);

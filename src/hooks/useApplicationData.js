@@ -1,4 +1,4 @@
-import React, { useReducer, useEffect } from "react";
+import { useReducer, useEffect } from "react";
 import axios from "axios";
 
 import reducer, {
@@ -52,10 +52,10 @@ export default function useApplicationData() {
 
   //Deletes interview data in appointments database API -- sets interview to null
   function cancelInterview(id) {
-    const appointment = {
-      ...state.appointments[id],
-      interview: null
-    };
+    // const appointment = {
+    //   ...state.appointments[id],
+    //   interview: null
+    // };
 
     return axios.delete(`/api/appointments/${id}`)
       .then(() => {

@@ -2,8 +2,9 @@ import React from "react";
 
 import { render, cleanup, waitForElement, fireEvent, getByText, getAllByTestId, getByAltText, getByPlaceholderText, queryByText, queryByAltText } from "@testing-library/react";
 
-/* 1. Add prettyDOM as import for Debugging purposes -- Will console log output html
-   2. Add debug [call with debug()] to container object on render for debugging purposes.
+/* POINTERS FOR DEBUGGING:
+    1. Add prettyDOM as import for debugging purposes -- Will console log clean html
+    2. Add debug [call with debug()] to container object on render for debugging purposes.
       Let's you pause code to debug, was removed after debugging. */
 
 import axios from "axios";
@@ -30,7 +31,6 @@ describe("Application", () => {
     await waitForElement(() => getByText(container, "Archie Cohen"));
 
     // 3. Click the "Add" button on the first empty appointment.
-    // const appointments = getAllByTestId(container, "appointment");
     const appointment = getAllByTestId(container, "appointment")[0];
 
     fireEvent.click(getByAltText(appointment, "Add"));
@@ -63,7 +63,7 @@ describe("Application", () => {
 
   it("loads data, cancels an interview and increases the spots available for Monday by 1", async () => {
     // 1. Render the Application.
-    const { container, debug } = render(<Application />);
+    const { container } = render(<Application />);
 
     // 2. Wait until the text "Archie Cohen" is displayed.
     await waitForElement(() => getByText(container, "Archie Cohen"));
