@@ -4,9 +4,9 @@ Scheduler is a responsive single page app created using predominently React.js. 
 
 ## Final Product
 
-!["Interview Creation"]()
+!["Interview Creation"](https://github.com/dbeattie/scheduler/blob/master/docs/Scheduler-Book-Appointment.png?raw=true)
 
-!["Interview Delete Confirmation"]()
+!["Interview Delete Confirmation"](https://github.com/dbeattie/scheduler/blob/master/docs/Scheduler-Confirm-Delete.png?raw=true)
 
 
 ## View Online
@@ -25,6 +25,11 @@ Scheduler is a responsive single page app created using predominently React.js. 
 4. With API database server set up and running, run a separate webpack development server with `npm start`
 
 5. View app locally at: http://localhost:8000
+
+## Stretch Work
+
+- Built a Heroku hosted database API that connects to the Netlify production app.
+- Connected circleCI to run automated tests prior to pushing master branch to production branch.
 
 ## Dependencies
 
@@ -57,7 +62,7 @@ Scheduler is a responsive single page app created using predominently React.js. 
 
 ## Extras 
 
-Storyboard was utilized during component creation and Jest was utilized for test automation. To view components in storyboard or run automated jest tests consider the following:
+Storyboard was utilized during component creation and Jest was utilized for test automation. To view components in storyboard or run automated jest tests locally consider the following:
 
 #### Running Storybook Visual Testbed
 
