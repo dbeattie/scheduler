@@ -48,15 +48,11 @@ export default function useApplicationData() {
       }
       dispatch({ type: SET_INTERVIEW, id, interview })
     }) 
-  }
+  };
 
   //Deletes interview data in appointments database API -- sets interview to null
   function cancelInterview(id) {
-    // const appointment = {
-    //   ...state.appointments[id],
-    //   interview: null
-    // };
-
+    
     return axios.delete(`/api/appointments/${id}`)
       .then(() => {
         //Adds an integer to the days.spots API, indicating availability
@@ -64,7 +60,7 @@ export default function useApplicationData() {
         state.days[dayObj.id - 1].spots++
         dispatch({ type: SET_INTERVIEW, id, interview: null })
       })
-  }
+  };
 
   return {
     state,

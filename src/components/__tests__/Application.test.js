@@ -201,5 +201,4 @@ describe("Application", () => {
       getByText(appointment, 'Could not delete appointment.')
     );
   });
-
 });

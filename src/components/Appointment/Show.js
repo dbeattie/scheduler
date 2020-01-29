@@ -28,4 +28,4 @@ export default function Empty(props) {
       </section>
     </main>
   );
-}
+};
